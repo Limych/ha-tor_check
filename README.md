@@ -1,6 +1,6 @@
 *Please :star: this repo if you find it useful*
 
-# Integration Blueprint
+# TOR Check component for Home Assistant
 
 [![GitHub Release][releases-shield]][releases]
 [![GitHub Activity][commits-shield]][commits]
@@ -10,31 +10,32 @@
 [![Project Maintenance][maintenance-shield]][user_profile]
 [![Support me on Patreon][patreon-shield]][patreon]
 
-[![Community Forum][forum-shield]][forum]
+<!-- [![Community Forum][forum-shield]][forum] -->
 
-_Integration to integrate with [integration_blueprint][integration_blueprint]._
+_Custom component to check your connection to TOR network._
 
 **This integration will set up the following platforms.**
 
 Platform | Description
 -- | --
-`binary_sensor` | Show something `True` or `False`.
-`sensor` | Show info from blueprint API.
-`switch` | Switch something `True` or `False`.
+`binary_sensor` | Shows current TOR network connection status.
+`sensor` | Shows your current public IP in TOR network (IP of TOR exit node you use now).
 
-## Known Limitations and Issues
+<!--## Known Limitations and Issues
 
 - Some example limitation.
+-->
 
 ## Installation
 
 ### Install from HACS (recommended)
 
 1. Have [HACS][hacs] installed, this will allow you to easily manage and track updates.
-1. Search for "Blueprint".
+1. Search in HACS for "TOR Check" integration or just press the button below:\
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)][hacs-repository]
 1. Click Install below the found integration.
 1. _If you want to configure component via Home Assistant UI..._\
-    in the HA UI go to "Configuration" > "Integrations" click "+" and search for "Integration blueprint".
+    in the HA UI go to "Configuration" > "Integrations" click "+" and search for "TOR Check".
 1. _If you want to configure component via `configuration.yaml`..._\
     follow instructions below, then restart Home Assistant.
 
@@ -42,14 +43,23 @@ Platform | Description
 
 1. Using the tool of choice open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
 1. If you do not have a `custom_components` directory (folder) there, you need to create it.
-1. In the `custom_components` directory (folder) create a new folder called `integration_blueprint`.
-1. Download file `integration_blueprint.zip` from the [latest release section][releases-latest] in this repository.
+1. In the `custom_components` directory (folder) create a new folder called `tor_check`.
+1. Download file `tor_check.zip` from the [latest release section][releases-latest] in this repository.
 1. Extract _all_ files from this archive you downloaded in the directory (folder) you created.
 1. Restart Home Assistant
 1. _If you want to configure component via Home Assistant UI..._\
-    in the HA UI go to "Configuration" > "Integrations" click "+" and search for "Blueprint".
+    in the HA UI go to "Configuration" > "Integrations" click "+" and search for "TOR Check".
 1. _If you want to configure component via `configuration.yaml`..._\
     follow instructions below, then restart Home Assistant.
+
+### Configuration Examples
+
+```yaml
+# Example configuration.yaml entry
+tor_check:
+  tor_host: 192.168.0.1
+  tor_port: 9050
+```
 
 <p align="center">* * *</p>
 I put a lot of work into making this repo and component available and updated to inspire and help others! I will be glad to receive thanks from you — it will give me new strength and add enthusiasm:
@@ -60,9 +70,15 @@ I put a lot of work into making this repo and component available and updated to
 16yfCfz9dZ8y8yuSwBFVfiAa3CNYdMh7Ts</a>
 </p>
 
-## Configuration is done in the UI
+### Configuration Variables
 
-<!---->
+**tor_host:**\
+  _(string) (Required)_\
+  Host name or IP address of TOR entry node (SOCKS5 proxy).
+
+**tor_port:**\
+  _(positive integer) (Optional) (Default value: 9050)_\
+  Port number of TOR entry node (SOCKS5 proxy).
 
 ## Track updates
 
@@ -76,7 +92,7 @@ To enable debug logs use this configuration:
 logger:
   default: info
   logs:
-    custom_components.integration_blueprint: debug
+    custom_components.tor_check: debug
 ```
 ... then restart HA.
 
@@ -97,7 +113,7 @@ The original setup of this component is by [Andrey "Limych" Khrolenok](https://g
 For a full list of all authors and contributors,
 check [the contributor's page][contributors].
 
-This Home Assistant custom component was created and is updated using the [HA-Blueprint template](https://github.com/Limych/ha-blueprint). You can use this template to maintain your own Home Assistant custom components.
+This Home Assistant custom component was created and is updated using the [HA-TOR Check template](https://github.com/Limych/ha-tor_check). You can use this template to maintain your own Home Assistant custom components.
 
 ## License
 
@@ -107,23 +123,24 @@ See separate [license file](LICENSE.md) for full text.
 
 ***
 
-[component]: https://github.com/Limych/ha-blueprint
-[commits-shield]: https://img.shields.io/github/commit-activity/y/Limych/ha-blueprint.svg?style=popout
-[commits]: https://github.com/Limych/ha-blueprint/commits/master
+[component]: https://github.com/Limych/ha-tor_check
+[commits-shield]: https://img.shields.io/github/commit-activity/y/Limych/ha-tor_check.svg?style=popout
+[commits]: https://github.com/Limych/ha-tor_check/commits/master
 [hacs-shield]: https://img.shields.io/badge/HACS-Custom-orange.svg?style=popout
 [hacs]: https://hacs.xyz
+[hacs-repository]: https://my.home-assistant.io/redirect/hacs_repository/?owner=Limych&repository=ha-tor_check&category=integration
 [exampleimg]: example.png
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg?style=popout
 [forum]: https://community.home-assistant.io/
-[license]: https://github.com/Limych/ha-blueprint/blob/main/LICENSE.md
+[license]: https://github.com/Limych/ha-tor_check/blob/main/LICENSE.md
 [license-shield]: https://img.shields.io/badge/license-Creative_Commons_BY--NC--SA_License-lightgray.svg?style=popout
 [maintenance-shield]: https://img.shields.io/badge/maintainer-Andrey%20Khrolenok%20%40Limych-blue.svg?style=popout
-[releases-shield]: https://img.shields.io/github/release/Limych/ha-blueprint.svg?style=popout
-[releases]: https://github.com/Limych/ha-blueprint/releases
-[releases-latest]: https://github.com/Limych/ha-blueprint/releases/latest
+[releases-shield]: https://img.shields.io/github/release/Limych/ha-tor_check.svg?style=popout
+[releases]: https://github.com/Limych/ha-tor_check/releases
+[releases-latest]: https://github.com/Limych/ha-tor_check/releases/latest
 [user_profile]: https://github.com/Limych
-[report_bug]: https://github.com/Limych/ha-blueprint/issues/new?template=bug_report.md
-[suggest_idea]: https://github.com/Limych/ha-blueprint/issues/new?template=feature_request.md
-[contributors]: https://github.com/Limych/ha-blueprint/graphs/contributors
+[report_bug]: https://github.com/Limych/ha-tor_check/issues/new?template=bug_report.md
+[suggest_idea]: https://github.com/Limych/ha-tor_check/issues/new?template=feature_request.md
+[contributors]: https://github.com/Limych/ha-tor_check/graphs/contributors
 [patreon-shield]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3DLimych%26type%3Dpatrons&style=popout
 [patreon]: https://www.patreon.com/join/limych
