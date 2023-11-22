@@ -5,4 +5,8 @@ default_config:
 logger:
   default: info
   logs:
-    custom_components.integration_blueprint: debug
+    custom_components.tor_check: debug
+
+tor_check:
+  tor_host: 192.168.1.7
+  tor_port: 9150

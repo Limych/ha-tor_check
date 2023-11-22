@@ -1,0 +1,18 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "description": "If you need help with the configuration have a look here: https://github.com/Limych/ha-tor_check",
+                "data": {
+                    "tor_host": "TOR SOCKS5 proxy host",
+                    "tor_port": "TOR SOCKS5 proxy port"
+                }
+            }
+        },
+        "error": {
+            "auth": "Proxy require authentication. Sorry...",
+            "connection": "Unable to connect to the proxy server.",
+            "unknown": "Unknown error occurred."
+        }
+    }
+}
