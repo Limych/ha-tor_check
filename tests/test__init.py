@@ -1,5 +1,5 @@
 # pylint: disable=protected-access,redefined-outer-name
-"""Test integration_blueprint setup process."""
+"""Test tor_check setup process."""
 
 
 def test_example():

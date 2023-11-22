@@ -19,7 +19,7 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from custom_components.integration_blueprint import IntegrationBlueprintApiClient
+from custom_components.tor_check import api
 
 pytest_plugins = "pytest_homeassistant_custom_component"  # pylint: disable=invalid-name
 
@@ -49,9 +49,7 @@ def skip_notifications_fixture():
 @pytest.fixture(name="bypass_get_data")
 def bypass_get_data_fixture():
     """Skip calls to get data from API."""
-    with patch.object(
-        IntegrationBlueprintApiClient, "async_get_data", side_effect=Mock()
-    ):
+    with patch.object(api, "_async_get_data", side_effect=Mock()):
         yield
 
 
@@ -60,7 +58,5 @@ def bypass_get_data_fixture():
 @pytest.fixture(name="error_on_get_data")
 def error_get_data_fixture():
     """Simulate error when retrieving data from API."""
-    with patch.object(
-        IntegrationBlueprintApiClient, "async_get_data", side_effect=Exception
-    ):
+    with patch.object(api, "_async_get_data", side_effect=Exception):
         yield
