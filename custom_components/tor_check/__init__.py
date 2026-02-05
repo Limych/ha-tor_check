@@ -21,7 +21,6 @@ from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
 from homeassistant.const import EVENT_HOMEASSISTANT_CLOSE, Platform
 from homeassistant.core import Event, HomeAssistant, callback
 from homeassistant.helpers.aiohttp_client import (
-    ENABLE_CLEANUP_CLOSED,
     MAXIMUM_CONNECTIONS,
     MAXIMUM_CONNECTIONS_PER_HOST,
     SERVER_SOFTWARE,
@@ -90,7 +89,6 @@ def _async_get_proxy_connector(
     connector = ProxyConnector.from_url(
         url=proxy_url,
         rdns=True,
-        enable_cleanup_closed=ENABLE_CLEANUP_CLOSED,
         ssl=ssl_context,
         limit=MAXIMUM_CONNECTIONS,
         limit_per_host=MAXIMUM_CONNECTIONS_PER_HOST,
